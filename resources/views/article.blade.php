@@ -1,9 +1,10 @@
 <html>
-  <body>
+  <body bgcolor="pale blue">
     <div>abc</div>
 
      <?php
-       echo "Hi, I'm a PHP script!";
+       echo "僕はどこかな？";
      ?>
+     <a href="map"><img src="razuppi.gif"border="0"></a>
   </body>
 </html>
