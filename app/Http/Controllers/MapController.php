@@ -15,8 +15,6 @@ class MapController extends Controller
     public function index()
     {
         $data=\DB::table('gakkou')
-        ->where('lati', '>=',35.4)
-        ->where('longi','>=',139.9)
         ->get();
         
         return view('map',['data'=>$data]);

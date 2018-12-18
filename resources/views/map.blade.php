@@ -10,12 +10,30 @@
         </style>
     </head>
     <body >
-        <p>test表示</p>
         <div id="map"></div>
-        <script type="text/javascript" src="map.js"></script>
+        <script>
+function initMap() {
+    navigator.geolocation.getCurrentPosition(function(position){
+    latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+    map = new google.maps.Map(document.getElementById("map"),{
+      center: latLng,
+      zoom: 17
+    });  
+    marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      icon: {
+		url: 'razuppi.gif',                      //アイコンのURL
+		scaledSize: new google.maps.Size(90, 90) //サイズ
+	}
+    });
+    @foreach ($data as $datas)
+        var uluru = {lat: {{$datas->lati}}, lng: {{$datas->longi}}};
+        var marker = new google.maps.Marker({position: uluru, map: map});
+    @endforeach
+    });
+}
+    </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
-        @foreach ($data as $datas)
-         {{ $datas->name }}
-        @endforeach
     </body>
 </html>
